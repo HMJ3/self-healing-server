@@ -1,5 +1,5 @@
-nginx
-  pkg.installed 
+nginx:
+  pkg.installed
 
 /etc/nginx/nginx.conf:
   file.managed:
@@ -16,6 +16,7 @@ nginx_service:
     - watch:
       - file: /etc/nginx/nginx.conf
       - file: /var/www/html/index.nginx-debian.html
+
 
 
       
