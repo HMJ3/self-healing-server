@@ -3,11 +3,11 @@ nginx:
 
 /etc/nginx/nginx.conf:
   file.managed:
-    - source: salt://self-healing-server/files/nginx/nginx.conf
+    - source: salt://self-healing-server/services/nginx/nginx.conf
 
 /var/www/html/index.nginx-debian.html:
   file.managed:
-    - source: salt://self-healing-server/files/nginx/index.html
+    - source: salt://self-healing-server/services/nginx/nginx.index.html
 
 nginx_service:
   service.running:
