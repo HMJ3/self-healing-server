@@ -24,20 +24,15 @@ nginx_service:
     - require:
       - pkg: nginx
 
-enable_beacon:
-  module.run:
-    - name: beacons.add
-    - beacon_module: ps
-    - m_name: nginx
-    - processes:
-        nginx:
-          - cmd: nginx
-          - full: True
-    - require:
-      - file: /etc/salt/minion.d/beacons.conf
+install_service_beacon:
+  file.managed:
+    - name: /etc/salt/minion.d/beacons.conf
+    - source: salt://self-healing-server/services/nginx/beacons.conf
+    - makedirs: True
 
-save_beacons:
-  module.run:
-    - name: beacons.save
-    - require:
-      - module: enable_beacon
+restart_minion_service:
+  service.running:
+    - name: salt-minion
+    - watch:
+      - file: install_service_beacon
+
