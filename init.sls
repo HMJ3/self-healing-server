@@ -36,3 +36,5 @@ restart_minion_service:
     - watch:
       - file: install_service_beacon
 
+# Add restart salt-minion.service to this script!!!!
+
