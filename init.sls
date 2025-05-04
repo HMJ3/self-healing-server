@@ -7,7 +7,7 @@ nginx:
 
 /var/www/html/index.nginx-debian.html:
   file.managed:
-    - source: salt://self-healing-server/services/nginx/nginx.index.html
+    - source: salt://self-healing-server/services/nginx/index.html
 
 nginx_service:
   service.running:
