@@ -24,3 +24,11 @@ nginx_service:
     - makedirs: True
     - require:
       - pkg: nginx
+
+salt_minion_id_restart:
+  cmd.wait:
+    - name: salt-call --local service.restart salt-minion
+    - bg: true
+    - order: last
+    - watch:
+      - file: /etc/salt/minion.d/beacons.conf
