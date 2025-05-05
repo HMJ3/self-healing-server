@@ -1,6 +1,5 @@
 {% set minion_id = data['id'] %}
-{% set beacon_data = data['data'] %}
-{% if beacon_data['nginx']['running'] == False %}
+{% if data['nginx']['running'] == False %}
 
 restart_nginx:
   local.cmd.run:
