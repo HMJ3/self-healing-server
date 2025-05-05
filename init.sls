@@ -36,11 +36,6 @@ restart_minion_service:
     - watch:
       - file: install_service_beacon
 
-restart_salt_minion:
-  cmd.run:
-    - name: systemctl restart salt-minion
-
-
 
 
     
